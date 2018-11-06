@@ -71,6 +71,7 @@ class VersionCommand extends Command {
 
     // https://docs.npmjs.com/misc/config#save-prefix
     this.savePrefix = this.options.exact ? "" : "^";
+    this.tagRegex = this.options.match || "";
 
     if (!this.project.isIndependent()) {
       this.logger.info("current version", this.project.version);
@@ -130,6 +131,7 @@ class VersionCommand extends Command {
       return false;
     }
 
+    this.execOpts.match = this.tagRegex;
     this.updates = collectUpdates(
       this.packageGraph.rawPackageList,
       this.packageGraph,

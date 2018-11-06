@@ -89,6 +89,10 @@ exports.builder = (yargs, composed) => {
       alias: "yes",
       type: "boolean",
     },
+    match: {
+      describe: "Add regex pattern to match other tag instead of latest",
+      type: "string"
+    }
   };
 
   if (composed) {
